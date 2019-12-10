@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb container">
         <li class="breadcrumb-item"><a href="index.php" style="color: black">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">USB</li>
+        <li class="breadcrumb-item active" aria-current="page">Accessory</li>
         </ol>
     </nav>
     <!--End of breadCum-->

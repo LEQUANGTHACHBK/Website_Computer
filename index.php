@@ -26,7 +26,7 @@
           <div class="carousel-caption text-center">
             <p>MacBook Pro 2019</p>
             <h4>More power.More performance.More pro.</h4>
-            <a href="#" class="btn btn-outline-light btn-lg">Buy Now</a>
+            <a href="laptop.php" class="btn btn-outline-light btn-lg">Buy Now</a>
           </div>
         </div>
           <!--  Slide sp1-->
@@ -36,7 +36,7 @@
           <div class="carousel-caption text-center">
             <p>iMac 2019</p>
             <h4>Pretty. Freaking powerful.</h4>
-            <a href="#" class="btn btn-outline-light btn-lg">Buy Now</a>
+            <a href="laptop.php" class="btn btn-outline-light btn-lg">Buy Now</a>
           </div>
         </div>
           <!-- End of Slide sp2-->
@@ -46,7 +46,7 @@
             <div class="carousel-caption text-center">
               <p>Beats Solo Headphones</p>
               <h4>More Matte Collection</h4>
-              <a href="#" class="btn btn-outline-light btn-lg">Buy Now</a>
+              <a href="Accessory.php" class="btn btn-outline-light btn-lg">Buy Now</a>
             </div>
           </div>
             <!-- End of Slide sp2-->

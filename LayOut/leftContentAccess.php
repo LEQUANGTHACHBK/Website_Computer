@@ -4,7 +4,7 @@
         <b>TÌM KIẾM</b>
         <div class="mt-3">
             <form class="form"  action="#" method="POST">
-            <input class="form-control" type="search" placeholder="Tên, Mã Số, Nhà Sản Xuất..." aria-label="Search" style="position:absolute">
+            <input class="form-control" type="search" placeholder="Tên, Mã Số, Nhà Sản Xuất...git" aria-label="Search" style="position:absolute">
             <button class="btn btn-success" type="submit" style="position:relative;top:0px;left:71%">Search</button>
             </form>
         </div>

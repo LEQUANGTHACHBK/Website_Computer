@@ -35,7 +35,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="index.php">Home</a>
           </li>
@@ -44,46 +44,9 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-              <table class="table table-borderless table-lg table-responsive text-left" style="width: 500px">
-                <thead>
-                  <tr>
-                    <th scope = "col" style="width: 150px"><a href="Public/page/pc.php">PC</a></th>
-                    <th scope = "col" style="width: 150px"><a href="Public/page/laptop.php">LAPTOP</a></th>
-                    <th scope = "col" style="width: 200px"><a href="accessories.php">ACCESSORIES</a></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="Public/page/desktop.php">Desktop</a></td>
-                    <td><a href="Public/page/macbook.php">MacBook</a></td>
-                    <td><a href="ssd.php">HDD, SSD</a></td>                       
-                  </tr>
-                  <tr>
-                    <td><a href="Public/page/">DELL</a></td>
-                    <td><a href="#">DELL</a></td>
-                    <td><a href="#">Caddy Bay</a></td> 
-                  </tr>
-                  <tr>
-                    <td><a href="#">INTEL</a></td>
-                    <td><a href="#">LENOVO</a></td>
-                    <td><a href="disk.php">Disks</a></td> 
-                  </tr>
-                  <tr>
-                    <td><a href="#">GIGABYTE</a></td>
-                    <td><a href="#">ASUS</a></td>
-                    <td><a href="usb.php">USB</a></td> 
-                  </tr>
-                  <tr>
-                    <td><a href="#">MSI</a></td>
-                    <td><a href="#">MSI</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">ACER</a></td>
-                    <td><a href="#">HP</a></td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="dropdown-menu account" aria-labelledby="navbarDropdown" >
+              <a class="dropdown-item" href="">LAPTOP</a>
+              <a class="dropdown-item" href="Accessory.php">ACCESSORI</a>
             </div>
           </li>
           <li class="nav-item">
