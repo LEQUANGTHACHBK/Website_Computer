@@ -25,7 +25,7 @@
   </head>
   <body data-spy ="scroll" data-target="#navbarResponsive">
     <!--NavBar-->
-    <nav class="navbar navbar-expand-md navbar-dark <?php 
+    <nav style="height:90px" class="navbar navbar-expand-md navbar-dark <?php 
       if($_SERVER['REQUEST_URI'] == "/Ass/index.php"||$_SERVER['REQUEST_URI'] == "/Ass/"){
         echo "fixed-top";
       }
@@ -40,13 +40,13 @@
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
+            <a class="nav-link" href="about.php">About Us</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Let's Shopping</a>
             <div class="dropdown-menu account" aria-labelledby="navbarDropdown" >
-              <a class="dropdown-item" href="">LAPTOP</a>
-              <a class="dropdown-item" href="Accessory.php">ACCESSORI</a>
+              <a class="dropdown-item" href="laptop.php"><img class="ml-1"src="https://img.icons8.com/nolan/32/000000/computer.png"> LAPTOP</a>
+              <a class="dropdown-item" href="accessories.php"><img class="ml-1" src="https://img.icons8.com/dusk/32/000000/headphones.png"> ACCESSORI</a>
             </div>
           </li>
           <li class="nav-item">
@@ -56,7 +56,7 @@
           <!-- <div style="margin-left:550px !important"> -->
 
          
-          <?php  if(isset($_SESSION['userId'])): ?>
+          <!-- <?php  if(isset($_SESSION['userId'])): ?>
             <li class="nav-item dropdown" >
               <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['userName']?></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:white;">
@@ -76,15 +76,15 @@
               </div>
             </li>
             
-          <?php endif;?>
+          <?php endif;?> -->
           <!-- </div> -->
-          <li class="nav-item" >
+          <!-- <li class="nav-item" >
             <a class="btn btn-light" id="cart-popover" data-placement="bottom" title="shopping cart">
               <span><i class="fa fa-shopping-cart fa-lg"></i></span>
               <span class="badge bg-dark text-white" style="border-radius: 40%"></span>
-              <!-- <span class="total_price">$0.00</span> -->
+              <span class="total_price">Products</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>

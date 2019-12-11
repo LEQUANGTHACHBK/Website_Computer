@@ -46,7 +46,7 @@
             <div class="carousel-caption text-center">
               <p>Beats Solo Headphones</p>
               <h4>More Matte Collection</h4>
-              <a href="Accessory.php" class="btn btn-outline-light btn-lg">Buy Now</a>
+              <a href="accessories.php" class="btn btn-outline-light btn-lg">Buy Now</a>
             </div>
           </div>
             <!-- End of Slide sp2-->
