@@ -117,17 +117,17 @@
                   <div class="card" style="height: 24rem;">
                     <img src="Public/images/products/<?php echo $row["Images"]?>"  class="card-img-top" title="<?php echo $row["Name"] ?>">
                     <div class="card-body"> 
-                      <p class="card-text text-justify"><a href="product_detail.php" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
-                      <input type="hidden" name="hidden_name" id="name<?php echo $row["Id"]?>" value="<?php echo $row["Name"] ?>" />
+                      <p class="card-text text-justify"><a href="product_detail.php?product_id=<?php echo $row["Id"] ?>" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
+                      <input type="hidden" name="hidden_price" id="nameh<?php echo $row["Id"]?>" value="<?php echo $row["Name"]?>" />
                       <p class="text-justify price"><?php echo $row["Price"]?><sup style="text-decoration:underline"> đ</sup></p>
-                      <input type="hidden" name="hidden_price" id="price<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
+                      <input type="hidden" name="hidden_price" id="priceh<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
                       <div class="start">
                         <?php for($i = 0; $i < $row["Start"];$i++):?>
                           <span class="fa fa-star checked"></span>
                         <?php endfor; ?>
                       </div>
                       <div class="row ">
-                        <button href="#" class="btn btn-success mr-1 add_to_cart" type="button" id=<?php echo $row["Id"]?> style="width:100%" title="Mua Nhanh">Add To Cart</button>
+                        <button href="#" class="btn btn-success mr-1 add_to_cart" id=<?php echo $row["Id"]?> style="width:100%" title="Mua Nhanh">Add To Cart</button>
                       </div>
                     </div>
                   </div>
@@ -159,10 +159,10 @@
                     <div class="card" style="height: 24rem;">
                       <img src="Public/images/products/<?php echo $row["Images"]?>"  class="card-img-top" title="<?php echo $row["Name"] ?>">
                       <div class="card-body"> 
-                        <p class="card-text text-justify"><a href="product_detail.php" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
-                        <input type="hidden" name="hidden_name" id="name<?php echo $row["Id"]?>" value="<?php echo $row["Name"] ?>" />
+                        <p class="card-text text-justify"><a href="product_detail.php?product_id=<?php echo $row["Id"] ?>" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
+                        <input type="hidden" name="hidden_name" id="nameh<?php echo $row["Id"]?>" value="<?php echo $row["Name"] ?>" />
                         <p class="text-justify price"><?php echo $row["Price"]?><sup style="text-decoration:underline"> đ</sup></p>
-                        <input type="hidden" name="hidden_price" id="price<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
+                        <input type="hidden" name="hidden_price" id="priceh<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
                         <div class="start">
                           <?php for($i = 0; $i < $row["Start"];$i++):?>
                             <span class="fa fa-star checked"></span>
@@ -208,10 +208,10 @@
                 <div class="card" style="height: 24rem;">
                   <img src="Public/images/products/<?php echo $row["Images"]?>"  class="card-img-top" title="<?php echo $row["Name"] ?>">
                   <div class="card-body"> 
-                    <p class="card-text text-justify"><a href="product_detail.php" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
-                    <input type="hidden" name="hidden_name" id="name<?php echo $row["Id"]?>" value="<?php echo $row["Name"] ?>" />
+                    <p class="card-text text-justify"><a href="product_detail.php?product_id=<?php echo $row["Id"] ?>" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
+                    <input type="hidden" name="hidden_name" id="nameh<?php echo $row["Id"]?>" value="<?php echo $row["Name"] ?>" />
                     <p class="text-justify price"><?php echo $row["Price"]?><sup style="text-decoration:underline"> đ</sup></p>
-                    <input type="hidden" name="hidden_price" id="price<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
+                    <input type="hidden" name="hidden_price" id="priceh<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
                     <div class="start">
                       <?php for($i = 0; $i < $row["Start"];$i++):?>
                         <span class="fa fa-star checked"></span>
@@ -250,10 +250,10 @@
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title"><p class="card-text text-justify"><a href="product_detail.php" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p></h5>
-                          <input type="hidden" name="hidden_name" id="name<?php echo $row["Id"]?>" value="<?php echo $row["Name"] ?>" />
+                          <h5 class="card-title"><p class="card-text text-justify"><a href="product_detail.php?product_id=<?php echo $row["Id"] ?>" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p></h5>
+                          <input type="hidden" name="hidden_name" id="nameh<?php echo $row["Id"]?>" value="<?php echo $row["Name"]?>" />
                           <p class="text-justify price"><?php echo $row["Price"]?><sup style="text-decoration:underline"> đ</sup></p>
-                          <input type="hidden" name="hidden_price" id="price<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
+                          <input type="hidden" name="hidden_price" id="priceh<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
                           <div class="start">
                             <?php for($i = 0; $i < $row["Start"];$i++):?>
                               <span class="fa fa-star checked"></span>
@@ -298,8 +298,129 @@
       </div>
     </div>    
     <!--End Top Branch-->
+    
+    <div id="popover_content_wrapper" style="display: none">
+      <span id="cart-details"></span>
+      <div class="mb-5">
+        <div class="float-right ml-2">
+            <a href="#" class="btn btn-dark" id="clear_cart">
+              <i class="fa fa-trash fa-lg"></i> Clear
+            </a>
+          </div>
+        <div class="float-right">
+          <a href="checkout.php" class="btn btn-success" id="check-out-cart" >
+            <i class="fa fa-shopping-cart fa-lg"></i> Check out
+          </a>
+        </div>
+        
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        
+        function load_cart_data(){
+          $.ajax({
+            url:'includes/fetch_cart.php',
+            method: 'POST',
+            dataType: "json",
+            success:function(data){
+              $('#cart-details').html(data.cart_details);
+              $('.badge').text(data.total_item);
+            }
+
+          })
+        }
+
+        load_cart_data();
+        
+        $.fn.popover.Constructor.Default.whiteList.table = [];
+        $.fn.popover.Constructor.Default.whiteList.tr = [];
+        $.fn.popover.Constructor.Default.whiteList.td = ['colspan','align'];
+        $.fn.popover.Constructor.Default.whiteList.th = [];
+        $.fn.popover.Constructor.Default.whiteList.div = [];
+        $.fn.popover.Constructor.Default.whiteList.tbody = [];
+        $.fn.popover.Constructor.Default.whiteList.thead = [];
+        $.fn.popover.Constructor.Default.whiteList.table = [];
+        $.fn.popover.Constructor.Default.whiteList.button = [];
+        
+        $('#cart-popover').popover({
+          html : true,
+          container: 'body',
+          content:function(){
+            return $('#popover_content_wrapper').html();
+          }
+        });
+
+
+        $(document).on('click', '.add_to_cart', function(){
+          var product_id = $(this).attr("id");
+          var product_name = $('#nameh'+product_id+'').val();
+          var product_price = $('#priceh'+product_id+'').val();
+          var product_quantity = 1;
+          console.log(product_quantity)
+          var action = "add";
+          $.ajax({
+            url:"includes/action.php",
+            method:"POST",
+            data:{product_id:product_id, product_name:product_name, product_price:product_price, product_quantity:product_quantity, action:action},
+            success:function(data)
+            {
+              load_cart_data();
+              alert("Item has been Added into Cart");
+            }
+          });
+        });
+
+
+        //Remove item from shopping card
+        $(document).on('click', '.delete', function(){
+          var product_id = $(this).attr("id");
+          var action = 'remove';
+          if(confirm("Are you sure you want to remove this product?"))
+          {
+            $.ajax({
+              url:"includes/action.php",
+              method:"POST",
+              data:{product_id:product_id, action:action},
+              success:function()
+              {
+                $('#cart-popover').popover('hide');
+                load_cart_data();
+                alert("Item has been removed from Cart");
+              }
+            })
+          }
+          else
+          {
+            return false;
+          }
+	      });
+
+
+        //Clear cart
+        $(document).on('click', '#clear_cart', function(){
+          var action = 'empty';
+          $.ajax({
+            url:"includes/action.php",
+            method:"POST",
+            data:{action:action},
+            success:function()
+            {
+              load_cart_data();
+              $('#cart-popover').popover('hide');
+              // alert("Your Cart has been clear");
+            }
+          });
+        });
+
+
+      })  
+      
+      
+    </script>                          
 
     <!--Footer-->
+    
     <?php require_once 'LayOut/footer.php' ?>
     <!--End of Footer-->
     

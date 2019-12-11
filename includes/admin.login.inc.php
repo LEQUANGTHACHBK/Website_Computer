@@ -23,7 +23,7 @@
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
                 if ($row = mysqli_fetch_assoc($result)) {
-                    if($passlogin != $row['adminPassword']){
+                    if($passlogin != $row['admminPassword']){
                         header("Location: ../adminlogin.php?error=wrongpassword");
                         exit();
                     }

@@ -12,6 +12,7 @@
         <script src="./Public/script/jquery.js"></script>
         <link rel="stylesheet" href="./Public/styles/font-awesome.min.css">
         <link rel="stylesheet" href="./Public/styles/bootstrap.min.css">
+        <script src="./Public/script/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="./Public/script/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,17 +52,17 @@
                 <div class="col-lg-7 text-light pt-3"><p style="font-size: 1.5em; font-weight:500"><a href="admin.php" style="text-decoration:none;color:white">BK COMPUTER ADMINTRATOR</a></p></div>
             </div>
             <div class="row management" id="ADMIN">
-                <a href="#" class="pt-3 pl-3 pb-3"><i class="fa fa-key" aria-hidden="true"></i></i> Admin Management</a>
+                <a href="admin.php" class="pt-3 pl-3 pb-3"><i class="fa fa-key" aria-hidden="true"></i></i> Admin Management</a>
             </div>
             <div class="row management" id="USER">
-                <a href="#" class="pt-3 pl-3 pb-3"><i class="fa fa-users fa-lg" aria-hidden="true"></i> User Management</a>
+                <a href="admin_user_managerment.php" class="pt-3 pl-3 pb-3"><i class="fa fa-users fa-lg" aria-hidden="true"></i> User Management</a>
             </div>
             <div class="row management" id="PROD">
-                <a href="#" class="pt-3 pl-3 pb-3"><i class="fa fa-laptop" aria-hidden="true"></i> Products Management</a>
+                <a href="admin_product_managerment.php" class="pt-3 pl-3 pb-3"><i class="fa fa-laptop" aria-hidden="true"></i> Products Management</a>
             </div>
         </div>
         <div id="right" >
-            <div id = "admin-right" style="display:block">
+            <div id = "admin-right">
                 <div class="row">
                     <div class="col-lg-6 mt-3">
                         <nav aria-label="breadcrumb">
@@ -80,79 +81,58 @@
                     </div>
                 </div>
                 <div style="padding-left: 35px">
-                <div>
                     <div class="row">
-                        <button class="btn btn-success" id="create_new_admin">NEW ADMIN</button>
-                    </div>
-                    <div class="row" id="new_admin_form" style="display:none">
-                        <form class= "mt-2 form-inline" action="includes/admin.signup.inc.php" method="POST">
-                            <div class="form-group">
-                                <input type="text" class = "form-control" name="admin_name" placeholder="Admin Name">
-                            </div>     
-                            <div class="form-group ml-1">
-                                <input type="email" class = "form-control" name="admin_email" placeholder="Admin Email" size="40">    
+                        <div class="col-lg-6 mt-3 pl-0 float-right">
+                            <div class="row">
+                                <button class ="btn btn-primary" data-toggle="modal" data-target="#addData">NEW ADMIN</button>
+                                <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ADD NEW ADMIN</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="includes/admin_action.inc.php" method="POST">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="name" class="col-form-label">NAME:</label>
+                                                    <input type="text" class="form-control" name="name" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email" class="col-form-label">EMAIL:</label>
+                                                    <input type="email" class="form-control" name="email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dob" class="col-form-label">DOB:</label>
+                                                    <input type="text" class="form-control" name="dob">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pass" class="col-form-label">PASSWORD:</label>
+                                                    <input type="password" class="form-control" name="pass">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="btn_create_new_admin" class="btn btn-success">Create</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group ml-1">
-                                <input type="password" class = "form-control" name="admin_pass" placeholder="Admin Password" size="14" >   
-                            </div>  
-                            <div class="form-group ml-1">
-                                <input type="password" class = "form-control" name="re_admin_pass" placeholder="Readmin Password" size="14">   
-                            </div>
-                            <div class="form-group ml-1">
-                                <input type="submit" class="btn btn-success " name="btn_new_admin" value="REGISTER">
-                            </div>  
-                        </form>
-                    </div>
-                    <?php 
-                        if(isset($_GET['error'])){
-                            if($_GET['error'] == "emptyfields"){
-                                echo '<script>alert("Please Fill In All Fields")</script>';
-                            }
-                            if($_GET['error'] == "invalidemailandname"){
-                                echo '<script>alert("Invalid Name Or Email")</script>';
-                            }
-                            if($_GET['error'] == "invalidemail"){
-                                echo '<script>alert("Invalid Email")</script>';
-                            }
-                            if($_GET['error'] == "invalidname"){
-                                echo '<script>alert("Invalid Name")</script>';
-                            }
-                            if($_GET['error'] == "passwordcheck"){
-                                echo '<script>alert("Password Not Match")</script>';
-                            }
-                            if($_GET['error'] == "usertaken"){
-                                echo '<script>alert("Admin Has Exist")</script>';
-                            }
-                        }
-                    ?>
-                    <div class="row">
-                        <div class="col-lg-6 mt-3 pl-0">
-                            <b>Show</b>
-                            <span>
-                                <select>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                </select>
-                            </span>
-                            <b>Entries</b>
-                        </div>
-                        <div class="col-lg-6 mt-3 " >
-                            <form class="form-inline my-2 my-lg-0 float-right">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
                         </div>
                     </div>
                     <div class="row">
                         <table class="table mt-2">
                             <thead>
                                 <tr class="text-center">
-                                    <th  width="10%">ID</th>
-                                    <th  width="30%">NAME</th>
-                                    <th  width="40%">EMAIL</th>
-                                    <th  width="20%">ACTION</th>
+                                    <th  width="10%">NAME</th>
+                                    <th  width="30%">EMAIL</th>
+                                    <th  width="20%">DOB</th>
+                                    <th  width="20%">EDIT</th>
+                                    <th  width="20%">DELETE</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -161,166 +141,55 @@
                                 $result = $conn->query("SELECT * FROM admin") or die($conn->error);   
                                 while($row = $result->fetch_assoc()): ?>
                                     <tr class="text-center">
-                                        <td><?php echo $row['id']?></td>
                                         <td><?php echo $row['adminName']?></td>
                                         <td><?php echo $row['adminEmail']?></td>
-                                        <td><button id = "<?php echo $row['id']?>" class="btn btn-danger delete_admin">DELETE</button></td>
-                                    </tr>
-                                <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                </div>
-            </div>
-            
-            <div id = "user-right" style="display:none" >
-                <div class="row">
-                    <div class="col-lg-6 mt-3">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb container" style="background-color: white">
-                                <li class="breadcrumb-item"><a href="admin.php" style="color: black;font-weight:700">ADMINTRATOR</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">User Management</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-lg-6 mt-3">
-                        <form action="includes/admin.logout.inc.php" method="POST">
-                            <button class="btn btn-dark ml-2" style="float: right">LOGOUT</button>
-                        </form>
-                        
-                        <h3 style="float: right">Hello <span><?php echo $_SESSION['adminName']?></span></h3>
-                    </div>
-                </div>
-                <div style="padding-left: 35px">
-                <div>
-                    <div class="row">
-                        <form action="">
-                            <button class="btn btn-success">NEW USER</button>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mt-3 pl-0">
-                            <b>Show</b>
-                            <span>
-                                <select>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                </select>
-                            </span>
-                            <b>Entries</b>
-                        </div>
-                        <div class="col-lg-6 mt-3 " >
-                            <form class="form-inline my-2 my-lg-0 float-right">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <table class="table mt-2">
-                            <thead>
-                                <tr class="text-center">
-                                    <th  width="10%">ID</th>
-                                    <th  width="30%">NAME</th>
-                                    <th  width="40%">EMAIL</th>
-                                    <th  width="20%">ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php 
-                                require 'includes/dbh.inc.php';
-                                $result = $conn->query("SELECT * FROM users") or die($conn->error);   
-                                while($row = $result->fetch_assoc()): ?>
-                                    <tr class="text-center">
-                                        <td><?php echo $row['Id']?></td>
-                                        <td><?php echo $row['userName']?></td>
-                                        <td><?php echo $row['userEmail']?></td>
-                                        <td><button id = "<?php echo $row['Id']?>" class="btn btn-danger">DELETE</button></td>
-                                    </tr>
-                                <?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                </div>
-            </div>
-                
-            <div id = "product-right" style="display:none">
-                <div class="row">
-                    <div class="col-lg-6 mt-3">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb container" style="background-color: white">
-                                <li class="breadcrumb-item"><a href="admin.php" style="color: black;font-weight:700">ADMINTRATOR</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Product Management</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-lg-6 mt-3">
-                        <form action="includes/admin.logout.inc.php" method="POST">
-                            <button class="btn btn-dark ml-2" style="float: right">LOGOUT</button>
-                        </form>
-                        
-                        <h3 style="float: right">Hello <span><?php echo $_SESSION['adminName']?></span></h3>
-                    </div>
-                </div>
-                <div style="padding-left: 35px">
-                <div>
-                    <div class="row">
-                        <form action="">
-                            <button class="btn btn-success">NEW PRODUCT</button>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mt-3 pl-0">
-                            <b>Show</b>
-                            <span>
-                                <select>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                </select>
-                            </span>
-                            <b>Entries</b>
-                        </div>
-                        <div class="col-lg-6 mt-3 " >
-                            <form class="form-inline my-2 my-lg-0 float-right">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <table class="table mt-2">
-                            <thead>
-                                <tr class="text-center">
-                                    <th  width="5%">ID</th>
-                                    <th  width="5%">TYPE</th>
-                                    <th  width="40%">NAME</th>
-                                    <th  width="5%">IMAGE</th>
-                                    <th  width="10%">PRICE</th>
-                                    <th  width="10%">BRANCH</th>
-                                    <th  width="5%">STATUS</th>
-                                    <th  width="20%">ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php 
-                                require 'includes/dbh.inc.php';
-                                $result = $conn->query("SELECT * FROM products") or die($conn->error);   
-                                while($row = $result->fetch_assoc()): ?>
-                                    <tr class="text-center">
-                                        <td><?php echo $row['Id']?></td>
-                                        <td><?php echo $row['Type']?></td>
-                                        <td><?php echo $row['Name']?></td>
-                                        <td><?php echo $row['Images']?></td>
-                                        <td><?php echo $row['Price']?></td>
-                                        <td><?php echo $row['Branch']?></td>
-                                        <td><?php echo $row['Status']?></td>
-                                        <td><button id = "<?php echo $row['id']?>" class="btn btn-warning">EDIT</button><button id = "<?php echo $row['id']?>" class="btn btn-danger ml-1">DELETE</button></td>
+                                        <td><?php echo $row['adminDob']?></td>
+                                        <td >
+                                            <button data-toggle="modal" data-target="#editData" id = "edit<?php echo $row['id']?>" class="btn btn-warning " name="edit_admin">EDIT</button>
+                                            <div class="modal fade" id="editData" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">EDIT ADMIN</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="includes/admin_action.inc.php" method="POST">
+                                                        <div class="modal-body text-left">
+                                                            <input type="hidden" name="id" value="<?php echo $row['id'] ?>">    
+                                                            <div class="form-group">
+                                                                <label for="name" class="col-form-label">NAME:</label>
+                                                                <input type="text" class="form-control" name="name" value="<?php echo $row['adminName'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="email" class="col-form-label">EMAIL:</label>
+                                                                <input type="email" class="form-control" name="email" value="<?php echo $row['adminEmail'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="dob" class="col-form-label">DOB:</label>
+                                                                <input type="text" class="form-control" name="dob" value="<?php echo $row['adminDob'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="pass" class="col-form-label">PASSWORD:</label>
+                                                                <input type="password" class="form-control" name="pass" value="<?php echo $row['admminPassword'] ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="btn_update_admin" class="btn btn-success">Update</button>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <form action="includes/admin_action.inc.php" method="POST">
+                                                <input type="hidden" name="id_hidden" value="<?php echo $row['id']?>">
+                                                <button id = "delete<?php echo $row['id']?>" class="btn btn-danger " name="delete_admin">DELETE</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>
@@ -330,32 +199,25 @@
                 </div>
             </div>
         </div>
-        
     </body>
-    <script>
-        $(document).ready(function () {
-            $('#create_new_admin').click(function(){
-                $('#new_admin_form').toggle();
-            })
-            $('#USER').click(function(){
-                $('#user-right').show();
-                $('#admin-right').hide();
-                $('#product-right').hide();
-            })
-            $('#ADMIN').click(function(){
-                $('#user-right').hide();
-                $('#admin-right').show();
-                $('#product-right').hide();
-            })
-            $('#PROD').click(function(){
-                $('#user-right').hide();
-                $('#admin-right').hide();
-                $('#product-right').show();
-            })
-        })
-    </script>
     </html>
-
+    <?php 
+        if(isset($_GET['signup'])){
+            if($_GET['signUp'] == "success"){
+                echo '<script>alert("Add New Admin Successfully")</script>';
+            }
+        }
+        if(isset($_GET['delete'])){
+            if($_GET['delete'] == "success"){
+                echo '<script>alert("Delete Admin Successfully")</script>';
+            }
+        }
+        if(isset($_GET['update'])){
+            if($_GET['update'] == "success"){
+                echo '<script>alert("Update Admin Successfully")</script>';
+            }
+        }
+    ?>                                  
 <?php else:?>
     <?php header("Location: ../Ass/adminlogin.php");?>
 <?php endif;?>
