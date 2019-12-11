@@ -32,7 +32,7 @@
                         session_start();
                         $_SESSION['userId']= $row['Id'];
                         $_SESSION['userName']= $row['userName'];
-                        header("Location: ../index.php");
+                        header("Location: ../accessories.php");
                         exit();
                     }
                     else{

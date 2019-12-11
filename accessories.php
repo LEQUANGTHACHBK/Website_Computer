@@ -4,34 +4,34 @@
         <div class="container">
           <div class="row pt-3">
             <div class="col-lg-4 d-none d-lg-block">
-              <p style="color:white;font-weight:500">Open 9am-9pm, Sun 9am-4pm</p>
+              <p style="color:white;font-weight:500"><img src="https://img.icons8.com/nolan/50/000000/open-sign.png"> Open 9am-9pm, Sun 9am-4pm</p>
             </div>
             <div class="col-lg-4">
             </div>
-            <div class="col-lg-2 pb-2 col-md-6 col-sm-6 col-12">
+            <div class="col-lg-2 pb-2 col-md-6 col-sm-6 col-6">
               <?php  if(isset($_SESSION['userId'])): ?>
-                <div class="nav-item dropdown" >
-                  <a class="nav-link dropdown-toggle pt-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; text-decoration:none;font-weight:500"><i class="fa fa-user"></i> <?php echo $_SESSION['userName']?></a>
+                <div class="nav-item dropdown">
+                  <a class=" nav-link dropdown-toggle pt-0 pl-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; text-decoration:none;font-weight:500"><img src="https://img.icons8.com/ios-filled/32/000000/user.png"> <?php echo $_SESSION['userName']?></a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:white;">
-                    <button class="btn-light dropdown-item account" type="button" ><a href="user.php">ACCOUNT</a></button>
+                    <button class="btn-light dropdown-item account" type="button" ><a href="user.php"><img src="https://img.icons8.com/nolan/32/000000/user-male.png">ACCOUNT</a></button>
                     <form action="includes/logout.inc.php" method="POST">
-                      <button class=" btn btn-light dropdown-item account" type="submit" style="color:black;font-weight:600" >LOGOUT</button>
+                      <button class=" btn btn-light dropdown-item account" type="submit" style="color:black;font-weight:600" ><img src="https://img.icons8.com/nolan/32/000000/exit.png">LOGOUT</button>
                     </form>
                   </div>
                 </div>
         
               <?php else:?>
                 <div class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle pt-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; text-decoration:none;font-weight:500"><i class="fa fa-user"></i> Account</a>
+                  <a class="nav-link dropdown-toggle pt-0 pl-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; text-decoration:none;font-weight:500"><img src="https://img.icons8.com/ios-filled/32/000000/user.png"> Account</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:white;">
-                    <button class="btn-light dropdown-item account" type="button" ><a href="login.php">LOGIN</a></button>
-                    <button class="btn-light dropdown-item account" type="button" ><a href="signup.php">SIGNUP</a></button>
+                    <button class="btn-light dropdown-item account" type="button" ><a href="login.php"><img src="https://img.icons8.com/nolan/32/000000/login-rounded-right.png"> LOGIN</a></button>
+                    <button class="btn-light dropdown-item account" type="button" ><a href="signup.php"><img src="https://img.icons8.com/nolan/32/000000/add-user-male.png"> SIGNUP</a></button>
                   </div>
               </div>
               <?php endif;?>
           </div>
-          <div class="col-lg-2 pb-2 col-md-6 col-sm-6 col-12">
-              <a class="ml-5" href="#"style="color: white; text-decoration:none;font-weight:500"><i class="fa fa-map-marker" aria-hidden="true"></i> Store</a>
+          <div class="col-lg-2 pb-2 col-md-6 col-sm-6 col-6">
+              <a href="#"style="color: white; text-decoration:none;font-weight:500"><img src="https://img.icons8.com/ios/32/000000/online-store.png"> Store</a>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="container">
           <div class="row pt-2 pb-2">
             <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
-              <h3 style="font-size:2em; font-weight:700">BK COMPUTER</h1>
+              <a href="index.php" style="color:white; font-size:2em; font-weight:600;text-decoration:none">BK COMPUTER</a>
             </div>
             <div class="col-lg-5 col-md-12 col-sm-12 col-12">
             <form class="form-inline my-2 my-lg-0" >
@@ -48,7 +48,7 @@
             </form>
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-              <i class="fa fa-phone" aria-hidden="true" style="color:white;border-radius:40%;border:solid 1px white;"></i><a href="$" style="color: white; text-decoration:none;font-weight:500" > (028)123456789 (10line)</a>
+            <img src="https://img.icons8.com/ios-filled/32/000000/ringing-phone.png"><a href="$" style="color: white; text-decoration:none;font-weight:500" > (028)123456789</a>
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-6">
               <a style= "color: white; text-decoration:none;font-weight:500" id="cart-popover" data-placement="bottom" title="shopping cart">
