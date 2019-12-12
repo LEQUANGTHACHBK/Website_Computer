@@ -145,8 +145,8 @@
                                         <td><?php echo $row['adminEmail']?></td>
                                         <td><?php echo $row['adminDob']?></td>
                                         <td >
-                                            <button data-toggle="modal" data-target="#editData" id = "edit<?php echo $row['id']?>" class="btn btn-warning " name="edit_admin">EDIT</button>
-                                            <div class="modal fade" id="editData" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                            <button data-toggle="modal" data-target="#edit<?php echo $row['id']?>" id ="<?php echo $row['id']?>" class="btn btn-warning " name="edit_admin">EDIT</button>
+                                            <div class="modal fade" id="edit<?php echo $row['id']?>" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                     <div class="modal-header">

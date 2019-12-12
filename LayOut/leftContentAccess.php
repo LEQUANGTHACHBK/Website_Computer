@@ -1,16 +1,4 @@
-<div class="mt-5 col-lg-3 d-none d-lg-block" id="leftcontent" style="padding-left:0px; padding-right:0px;">
-    <!--Search Box-->
-    <div>
-        <b>SEARCH</b>
-        <div class="mt-3">
-            <form class="form"  action="#" method="POST">
-            <input class="form-control" type="search" placeholder="Name, Id, Branch ..." aria-label="Search" style="position:absolute">
-            <button class="btn btn-success" type="submit" style="position:relative;top:0px;left:71%">Search</button>
-            </form>
-        </div>
-            
-    </div>
-    <!--End of Search Box-->       
+<div class="mt-5 col-lg-3 d-none d-lg-block" id="leftcontent" style="padding-left:0px; padding-right:0px;">  
 
     <!--Chech Box-->
     <div class="mt-3">

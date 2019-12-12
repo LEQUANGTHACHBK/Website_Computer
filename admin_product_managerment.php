@@ -12,6 +12,7 @@
         <script src="./Public/script/jquery.js"></script>
         <link rel="stylesheet" href="./Public/styles/font-awesome.min.css">
         <link rel="stylesheet" href="./Public/styles/bootstrap.min.css">
+        <script src="./Public/script/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="./Public/script/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,13 +62,13 @@
             </div>
         </div>
         <div id="right" >
-            <div id = "product-right">
+            <div id = "admin-right">
                 <div class="row">
                     <div class="col-lg-6 mt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb container" style="background-color: white">
                                 <li class="breadcrumb-item"><a href="admin.php" style="color: black;font-weight:700">ADMINTRATOR</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Product Management</li>
+                                <li class="breadcrumb-item active" aria-current="page">User Management</li>
                             </ol>
                         </nav>
                     </div>
@@ -80,25 +81,89 @@
                     </div>
                 </div>
                 <div style="padding-left: 35px">
-                <div>
                     <div class="row">
-                        <form action="">
-                            <button class="btn btn-success">NEW PRODUCT</button>
-                        </form>
-                    </div>
+                        <div class="col-lg-6 mt-3 pl-0 float-right">
+                            <div class="row">
+                                <button class ="btn btn-primary" data-toggle="modal" data-target="#addData">NEW PRODUCT</button>
+                                <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ADD NEW PRODUCT</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="includes/admin_action.inc.php" method="POST">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="type" class="col-form-label">TYPE:</label>
+                                                    <input type="text" class="form-control" name="type" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="name" class="col-form-label">NAME:</label>
+                                                    <input type="text" class="form-control" name="name" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="images" class="col-form-label">IMAGE:</label>
+                                                    <input type="text" class="form-control" name="images" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="price" class="col-form-label">PRICE:</label>
+                                                    <input type="text" class="form-control" name="price" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="start" class="col-form-label">START:</label>
+                                                    <input type="text" class="form-control" name="start" >
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="branch" class="col-form-label">BRANCH:</label>
+                                                    <input type="text" class="form-control" name="branch" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status" class="col-form-label">STATUS:</label>
+                                                    <input type="text" class="form-control" name="status" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="monitor" class="col-form-label">MONITER:</label>
+                                                    <input type="text" class="form-control" name="moniter" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cpu" class="col-form-label">CPU:</label>
+                                                    <input type="text" class="form-control" name="cpu" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ram" class="col-form-label">RAM:</label>
+                                                    <input type="text" class="form-control" name="ram">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pin" class="col-form-label">PIN:</label>
+                                                    <input type="text" class="form-control" name="pin">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="btn_create_new_product" class="btn btn-success">Create</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <table class="table mt-2">
                             <thead>
                                 <tr class="text-center">
-                                    <th  width="5%">ID</th>
-                                    <th  width="5%">TYPE</th>
-                                    <th  width="40%">NAME</th>
+                                    <th  width="10%">TYPE</th>
+                                    <th  width="45%">NAME</th>
                                     <th  width="5%">IMAGE</th>
                                     <th  width="10%">PRICE</th>
                                     <th  width="10%">BRANCH</th>
-                                    <th  width="5%">STATUS</th>
-                                    <th  width="20%">ACTION</th>
+                                    <th  width="10%">EDIT</th>
+                                    <th  width="10%">DELETE</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,14 +172,86 @@
                                 $result = $conn->query("SELECT * FROM products") or die($conn->error);   
                                 while($row = $result->fetch_assoc()): ?>
                                     <tr class="text-center">
-                                        <td><?php echo $row['Id']?></td>
                                         <td><?php echo $row['Type']?></td>
                                         <td><?php echo $row['Name']?></td>
                                         <td><?php echo $row['Images']?></td>
                                         <td><?php echo $row['Price']?></td>
                                         <td><?php echo $row['Branch']?></td>
-                                        <td><?php echo $row['Status']?></td>
-                                        <td><button id = "<?php echo $row['id']?>" class="btn btn-warning">EDIT</button><button id = "<?php echo $row['id']?>" class="btn btn-danger ml-1">DELETE</button></td>
+                                        <td >
+                                            <button data-toggle="modal" data-target="#edit<?php echo $row['Id']?>" id ="<?php echo $row['Id']?>" class="btn btn-warning " name="edit_admin">EDIT</button>
+                                            <div class="modal fade" id="edit<?php echo $row['Id']?>" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">EDIT PRODUCT</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="includes/admin_action.inc.php" method="POST">
+                                                        <div class="modal-body text-left">
+                                                            <input type="hidden" name="id" value="<?php echo $row['Id'] ?>">
+                                                            <div class="form-group">
+                                                                <label for="type" class="col-form-label">TYPE:</label>
+                                                                <input type="text" class="form-control" name="type" value="<?php echo $row['Type'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="name" class="col-form-label">NAME:</label>
+                                                                <input type="text" class="form-control" name="name" value="<?php echo $row['Name'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="images" class="col-form-label">IMAGES:</label>
+                                                                <input type="text" class="form-control" name="images" value="<?php echo $row['Images'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="price" class="col-form-label">PRICE:</label>
+                                                                <input type="text" class="form-control" name="price" value="<?php echo $row['Price'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="start" class="col-form-label">START:</label>
+                                                                <input type="text" class="form-control" name="start" value="<?php echo $row['Start'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="branch" class="col-form-label">BRANCH:</label>
+                                                                <input type="text" class="form-control" name="branch" value="<?php echo $row['Branch'] ?>">
+                                                            </div> 
+                                                            <div class="form-group">
+                                                                <label for="status" class="col-form-label">STATUS:</label>
+                                                                <input type="text" class="form-control" name="status" value="<?php echo $row['Status'] ?>">
+                                                            </div>  
+                                                            <div class="form-group">
+                                                                <label for="monitor" class="col-form-label">MONITOR:</label>
+                                                                <input type="text" class="form-control" name="monitor" value="<?php echo $row['Monitor'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cpu" class="col-form-label">CPU:</label>
+                                                                <input type="text" class="form-control" name="cpu" value="<?php echo $row['Cpu'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="ram" class="col-form-label">RAM:</label>
+                                                                <input type="text" class="form-control" name="ram" value="<?php echo $row['Ram'] ?>">
+                                                            </div> 
+                                                            <div class="form-group">
+                                                                <label for="pin" class="col-form-label">PIN:</label>
+                                                                <input type="text" class="form-control" name="pin" value="<?php echo $row['Pin'] ?>">
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="btn_update_product" class="btn btn-success">Update</button>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <form action="includes/admin_action.inc.php" method="POST">
+                                                <input type="hidden" name="id_hidden" value="<?php echo $row['Id']?>">
+                                                <button id = "delete<?php echo $row['id']?>" class="btn btn-danger " name="delete_product">DELETE</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>
@@ -124,10 +261,30 @@
                 </div>
             </div>
         </div>
-        
     </body>
     </html>
-
+    <?php 
+        if(isset($_GET['add'])){
+            if($_GET['add'] == "success"){
+                echo '<script>alert("Add New Product Successfully")</script>';
+            }
+        }
+        if(isset($_GET['delete'])){
+            if($_GET['delete'] == "success"){
+                echo '<script>alert("Delete Product Successfully")</script>';
+            }
+        }
+        if(isset($_GET['update'])){
+            if($_GET['update'] == "success"){
+                echo '<script>alert("Update Product Successfully")</script>';
+            }
+        }
+    ?>                                  
 <?php else:?>
     <?php header("Location: ../Ass/adminlogin.php");?>
 <?php endif;?>
+
+
+
+
+

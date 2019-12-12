@@ -12,6 +12,7 @@
         <script src="./Public/script/jquery.js"></script>
         <link rel="stylesheet" href="./Public/styles/font-awesome.min.css">
         <link rel="stylesheet" href="./Public/styles/bootstrap.min.css">
+        <script src="./Public/script/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="./Public/script/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,7 +62,7 @@
             </div>
         </div>
         <div id="right" >
-            <div id = "user-right">
+            <div id = "admin-right">
                 <div class="row">
                     <div class="col-lg-6 mt-3">
                         <nav aria-label="breadcrumb">
@@ -80,20 +81,63 @@
                     </div>
                 </div>
                 <div style="padding-left: 35px">
-                <div>
                     <div class="row">
-                        <form action="">
-                            <button class="btn btn-success" id="create_new_user">NEW USER</button>
-                        </form>
+                        <div class="col-lg-6 mt-3 pl-0 float-right">
+                            <div class="row">
+                                <button class ="btn btn-primary" data-toggle="modal" data-target="#addData">NEW USER</button>
+                                <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ADD NEW USER</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="includes/admin_action.inc.php" method="POST">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="name" class="col-form-label">NAME:</label>
+                                                    <input type="text" class="form-control" name="name" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email" class="col-form-label">EMAIL:</label>
+                                                    <input type="email" class="form-control" name="email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="phone" class="col-form-label">PHONE:</label>
+                                                    <input type="text" class="form-control" name="phone">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dob" class="col-form-label">DOB:</label>
+                                                    <input type="text" class="form-control" name="dob">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pass" class="col-form-label">PASSWORD:</label>
+                                                    <input type="password" class="form-control" name="pass">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="btn_create_new_user" class="btn btn-success">Create</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <table class="table mt-2">
                             <thead>
                                 <tr class="text-center">
-                                    <th  width="10%">ID</th>
-                                    <th  width="30%">NAME</th>
-                                    <th  width="40%">EMAIL</th>
-                                    <th  width="20%">ACTION</th>
+                                    <th  width="10%">NAME</th>
+                                    <th  width="30%">EMAIL</th>
+                                    <th  width="10%">PHONE</th>
+                                    <th  width="20%">DOB</th>
+                                    <th  width="15%">EDIT</th>
+                                    <th  width="15%">DELETE</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,14 +146,54 @@
                                 $result = $conn->query("SELECT * FROM users") or die($conn->error);   
                                 while($row = $result->fetch_assoc()): ?>
                                     <tr class="text-center">
-                                        <td><?php echo $row['Id']?></td>
                                         <td><?php echo $row['userName']?></td>
                                         <td><?php echo $row['userEmail']?></td>
-                                        <td class="row">
-                                            <button id = "<?php echo $row['id']?>" class="btn btn-warning edit_admin mr-2">EDIT</button>
+                                        <td><?php echo $row['userPhone']?></td>
+                                        <td><?php echo $row['userDoB']?></td>
+                                        <td >
+                                            <button data-toggle="modal" data-target="#edituser<?php echo $row['Id']?>" id ="<?php echo $row['id']?>" class="btn btn-warning " name="edit_admin">EDIT</button>
+                                            <div class="modal fade" id="edituser<?php echo $row['Id']?>" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">EDIT ADMIN</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form action="includes/admin_action.inc.php" method="POST">
+                                                        <div class="modal-body text-left">
+                                                            <input type="hidden" name="id" value="<?php echo $row['Id'] ?>">    
+                                                            <div class="form-group">
+                                                                <label for="name" class="col-form-label">NAME:</label>
+                                                                <input type="text" class="form-control" name="name" value="<?php echo $row['userName'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="email" class="col-form-label">EMAIL:</label>
+                                                                <input type="email" class="form-control" name="email" value="<?php echo $row['userEmail'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="phone" class="col-form-label">PHONE:</label>
+                                                                <input type="text" class="form-control" name="phone" value="<?php echo $row['userPhone'] ?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="dob" class="col-form-label">DOB:</label>
+                                                                <input type="text" class="form-control" name="dob" value="<?php echo $row['userDoB'] ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" name="btn_update_user" class="btn btn-success">Update</button>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
                                             <form action="includes/admin_action.inc.php" method="POST">
-                                                <input type="hidden" name="id_user_hidden" value="<?php echo $row['Id']?>">
-                                                <button id = "<?php echo $row['Id']?>" class="btn btn-danger " name="delete_user">DELETE</button>
+                                                <input type="hidden" name="id_hidden" value="<?php echo $row['Id']?>">
+                                                <button id = "delete<?php echo $row['id']?>" class="btn btn-danger " name="delete_user">DELETE</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -121,10 +205,25 @@
                 </div>
             </div>
         </div>
-        
     </body>
     </html>
-
+    <?php 
+        if(isset($_GET['signup'])){
+            if($_GET['signUp'] == "success"){
+                echo '<script>alert("Add New User Successfully")</script>';
+            }
+        }
+        if(isset($_GET['delete'])){
+            if($_GET['delete'] == "success"){
+                echo '<script>alert("Delete User Successfully")</script>';
+            }
+        }
+        if(isset($_GET['update'])){
+            if($_GET['update'] == "success"){
+                echo '<script>alert("Update User Successfully")</script>';
+            }
+        }
+    ?>                                  
 <?php else:?>
     <?php header("Location: ../Ass/adminlogin.php");?>
 <?php endif;?>

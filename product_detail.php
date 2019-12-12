@@ -36,29 +36,6 @@
           </div>
         </div>
         <hr style="border:none; border-bottom:solid 2px white;margin:0px 0px">
-        <div class="container">
-          <div class="row pt-2 pb-2">
-            <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-flex justify-content-center">
-              <a href="index.php" style="color:white; font-size:2em; font-weight:600;text-decoration:none">BK COMPUTER</a>
-            </div>
-            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
-            <form class="form-inline my-2 my-lg-0" >
-              <input class="form-control mr-sm-2" style="width:70%" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" style="width:25%" type="submit">Search</button>
-            </form>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-            <img src="https://img.icons8.com/ios-filled/32/000000/ringing-phone.png"><a href="$" style="color: white; text-decoration:none;font-weight:500" > (028)123456789</a>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-              <a style= "color: white; text-decoration:none;font-weight:500" id="cart-popover" data-placement="bottom" title="shopping cart">
-              <img src="https://img.icons8.com/wired/32/000000/add-shopping-cart.png">
-                <span class="badge bg-dark text-white" style="border-radius: 40%"></span>
-                <span>Products</span>
-              </a>
-            </div>
-          </div>
-        </div>
     </div>
     <?php 
         $product_id = $_GET['product_id'];

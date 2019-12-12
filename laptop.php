@@ -42,9 +42,9 @@
               <a href="index.php" style="color:white; font-size:2em; font-weight:600;text-decoration:none">BK COMPUTER</a>
             </div>
             <div class="col-lg-5 col-md-12 col-sm-12 col-12">
-            <form class="form-inline my-2 my-lg-0" >
-              <input class="form-control mr-sm-2" style="width:70%" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" style="width:25%" type="submit">Search</button>
+            <form class="form-inline my-2 my-lg-0" action="laptop.php" method="POST">
+              <input class="form-control mr-sm-2" style="width:70%" name="searchtext" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" style="width:25%" name="btn_search" type="submit">Search</button>
             </form>
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-6">
@@ -76,7 +76,48 @@
         <hr style="border: solid 2px black">
         <div class="row">
             <?php  require 'Layout/leftContentAccess.php'?>
-            <div class="col-lg-9 col-md-12 col-sm-12 col-12">
+            
+            <?php if(isset($_POST['btn_search'])&& !empty($_POST['searchtext'])):?>
+              
+              <div class="col-lg-9 col-md-12 col-sm-12 col-12" id="search_laptop_area">
+                <div class="row">
+                <?php 
+                    require 'includes/dbh.inc.php';
+                    $searchText = $_POST['searchtext'];
+                    $result = $conn->query("SELECT * FROM products WHERE Name LIKE '$searchText' OR Branch LIKE '$searchText' AND type = 'laptop'") or die($conn->error);   
+                    if(mysqli_num_rows($result) <= 0){
+                      echo '<h1>NO FOUND</h1>';
+                    }else{
+                      while($row = $result->fetch_assoc()): ?>
+                        <div class="col-lg-3 col-md-3 col-sm-4  col-6  d-flex justify-content-center ">
+                        <div class="card" style="height: 24rem;">
+                            <img src="Public/images/products/<?php echo $row["Images"]?>"  class="card-img-top" title="<?php echo $row["Name"] ?>">
+                            <div class="card-body"> 
+                            <p class="card-text text-justify"><a href="product_detail.php?product_id=<?php echo $row["Id"] ?>" id="name<?php echo $row["Id"]?>" class="product_name" ><?php echo $row["Name"]?></a></p>
+                            <input type="hidden" name="hidden_price" id="nameh<?php echo $row["Id"]?>" value="<?php echo $row["Name"]?>" />
+                            <p class="text-justify price"><?php echo $row["Price"]?><sup style="text-decoration:underline"> đ</sup></p>
+                            <input type="hidden" name="hidden_price" id="priceh<?php echo $row["Id"]?>" value=<?php echo $row["Price"]?> />
+                            <div class="start">
+                                <?php for($i = 0; $i < $row["Start"];$i++):?>
+                                <span class="fa fa-star checked"></span>
+                                <?php endfor; ?>
+                            </div>
+                            <div class="row ">
+                                <button href="#" class="btn btn-success mr-1 add_to_cart" id=<?php echo $row["Id"]?> style="width:100%" title="Mua Nhanh">Add To Cart</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div> 
+                        <?php endwhile; ?>  
+                    <?php } ?>
+                    
+                </div>
+                
+            </div>
+
+
+            <?php else: ?>
+              <div class="col-lg-9 col-md-12 col-sm-12 col-12" id="laptop_area">
                 <div class="row">
                 <?php 
                     require 'includes/dbh.inc.php';
@@ -102,22 +143,11 @@
                         </div>
                     </div>
                     </div> 
-                    <?php endwhile; ?>  
+                    <?php endwhile; ?>                    
                 </div>
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
-                </nav>
-            </div>
+              </div>
+            <?php endif; ?>
+            
         </div>
                               
     </div>
@@ -236,7 +266,6 @@
             }
           });
         });
-
 
       })  
       

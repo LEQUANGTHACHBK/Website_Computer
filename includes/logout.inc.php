@@ -1,5 +1,7 @@
 <?php 
     session_start();
-    session_unset();
+    unset($_SESSION["userId"]);
+    unset($_SESSION["userName"]);
+    session_destroy();
     header("Location: ../accessories.php");
 ?>
