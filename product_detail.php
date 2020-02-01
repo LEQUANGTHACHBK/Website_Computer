@@ -64,8 +64,10 @@
                 <p><img src="https://img.icons8.com/color/32/000000/checked-checkbox.png"><?php echo $row['Pin']?></p>
                 <div class="row">
                   <div class="col-6">
+                    <a href="checkout.php" style="color:white;text-decoration:none">
                     <button class="btn btn-success" style="width:100%; font-weight:700">MUA NGAY
                     <br> <span style="font-size:0.7em;font-weight:500"> Giao hàng miễn phí tận nơi</span>
+                    </a>
                     </button>
                   </div>
                   <div class="col-6">

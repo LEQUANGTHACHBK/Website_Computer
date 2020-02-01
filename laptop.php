@@ -63,10 +63,10 @@
     <div class="container ">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center banner">
-            <img src="Public/images/Banner/lap01.PNG" alt="banner1" title="Mac 2019" />
+            <img src="Public/images/Banner/lap03.PNG" alt="banner1" title="Mac 2019" />
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center banner">
-            <img src="Public/images/Banner/lap02.PNG" alt="banner2"  title="Mac 2018"/>
+            <img src="Public/images/Banner/lap03.PNG" alt="banner2"  title="Mac 2018"/>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center banner">
             <img src="Public/images/Banner/lap03.PNG" alt="banner3" title="Mac 2019_pro"/>
